@@ -50,6 +50,11 @@ columns_to_transform = ["Destination", "HomePlanet"]
 
 df = pd.get_dummies(df, columns=columns_to_transform)
 
+columns_to_drop = ["Cabin", "Name", "PassengerId"]
+
+for col in columns_to_drop:
+    df = df.drop(col, axis="columns")
+
 print(df.head(10))
 
 df.to_csv("dataset/processed_test.csv", index=False)
